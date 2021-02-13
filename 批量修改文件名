@@ -1,0 +1,22 @@
+import os
+import numpy as np
+
+#获取目标目录
+list = open("公司名称.txt",encoding="utf-8")
+list_new=[]
+for i in list:
+    i_new=str(i[:-1])
+    list_new.append(i_new)
+#获取待修改目录
+path1="主营收入构成/"
+filelist=os.listdir(path1)
+for i in filelist:
+    i_new=str(i[3:-4])
+    print(i_new)
+    for j in list_new:
+        print(j)
+        if i_new in j:
+            oldname=path1+os.sep+i
+            newname=path1+os.sep+j+'.pdf'
+            os.rename(oldname,newname)
+            print(oldname,newname)
